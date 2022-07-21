@@ -20,15 +20,17 @@ let lights = document.getElementById('streetlight').getElementsByTagName('div');
 const colorList = ['red', 'yellow', 'green'];
 let count = 0;
 function changeColor() {
+    let countPrev;
+    if (count > 0) {
+        countPrev = count - 1;
+        lights[countPrev].style.backgroundColor = 'black';
+    }
     if (count === colorList.length) {
         count = 0;
-        for (let i = 0; i < lights.length; i++) {
-            lights[i].style.backgroundColor = 'black';
-        }
     }
     lights[count].style.backgroundColor = colorList[count];
-    setTimeout(changeColor, 3000);
     count++;
+    setTimeout(changeColor, 3000);
 }
 changeColor();
 
